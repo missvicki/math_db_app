@@ -1,0 +1,15 @@
+FROM image-mirror-prod-registry.cloud.duke.edu/library/mysql:latest
+
+ARG MYSQL_ROOT_PASSWORD
+ARG MYSQL_PASSWORD
+ARG MYSQL_DATABASE
+ARG MYSQL_USER
+
+RUN if [ -z ${MYSQL_PASSWORD} ] && [ -z ${MYSQL_USER} ] && [ -z ${MYSQL_DATABASE} ] && [ -z ${MYSQL_ROOT_PASSWORD} ];then \
+    >&2 printf  "\n****************Warning!!!!*************\n"; \
+    >&2 printf "MYSQL_PASSWORD AND/OR MYSQL_USER AND/OR MYSQL_DATABASE AND/OR MYSQL_ROOT_PASSWORD variables are not set!";\
+    fi
+
+EXPOSE 3306
+
+CMD ["mysqld"]

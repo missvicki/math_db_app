@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Math DB</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    
+    <!-- CDN importing D3 -->
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="module" src="static/js/main.js"></script>
+    <script type="text/javascript" src="static/js/changeGraph.js"></script>
+    <link href="https://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" rel="Stylesheet">
+    <!-- <script src="YourJquery source path"></script> -->
+    <script src="https://code.jquery.com/ui/1.10.2/jquery-ui.js" ></script>
+    <script> window.urlKey = "{{ url_key }}";</script>
+
+  </head>
+  <body> 
+      <!--- 
+        This is the tag where you draw the graph
+      -->
+      <div id="Header">
+        <a class="active" href="/base"><b>Math Database</b></a>
+        <a href="/base/graphs">Graphs</a>
+        <a href="/base/about">About</a>
+      </div>
+      <div>
+        <label for="graph-type">Graph Type: </label>
+        <select name="graph-type" id = "graph" >
+          <option value = "option1">Option1</option>
+          <option value = "option2">Option2</option>
+        </select>
+      </div>
+      <div>
+        <label>Enter Parameter(s):</label>
+        <form method="get">
+          <div class="autocomplete" style="width:300px;">
+            <input class="input" type="text" id="search"/>
+            <input key-focus=0 id="button1" type="button" value = "Search" />
+          </div>
+          <!-- <input id="button2" type="button" value = "submit2" onclick="changeGraph.update(data2)"> -->
+        </form>
+      </div>
+
+      <div className="data-displays">
+        <svg className="bar-graph" id="BarGraphCanvas"></svg>
+        <div className="data-table" id="DataTable"></div>
+        <svg className="test-graph" id="TestGraph"></svg>
+      </div>
+
+  </body>
+</html>
